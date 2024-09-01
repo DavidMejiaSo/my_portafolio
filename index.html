@@ -3,22 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Windows XP DMS Portafolio</title>
+    <title>Windows XP Desktop Replica with BIOS, Projects, and Start Menu</title>
     <style>
         body, html {
             margin: 0;
             padding: 0;
             height: 100%;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
         }
-        .desktop {
-            background-image: url('https://wallpapercave.com/wp/gBTjhlp.jpg');
+        #bios {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            color: white;
+            font-family: monospace;
+            padding: 20px;
+            box-sizing: border-box;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+        #desktop {
+            background-image: url('https://c4.wallpaperflare.com/wallpaper/788/873/250/hills-microsoft-windows-windows-xp-wallpaper-preview.jpg');
             background-size: cover;
             background-position: center;
             height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
         }
         .icons {
             display: flex;
@@ -34,6 +53,7 @@
             color: white;
             text-align: center;
             width: 64px;
+            cursor: pointer;
         }
         .icon img {
             width: 48px;
@@ -57,6 +77,48 @@
         }
         .time {
             font-size: 14px;
+        }
+        #projects-window {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            height: 80%;
+            background-color: #fff;
+            border: 1px solid #0055E5;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            display: none;
+            flex-direction: column;
+        }
+        .window-header {
+            background-color: #0055E5;
+            color: white;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .close-button {
+            background-color: #FF0000;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        .window-content {
+            padding: 20px;
+            overflow-y: auto;
+        }
+        .project {
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .featured-project {
+            background-color: #f0f0ff;
+            border: 1px solid #0055E5;
         }
         .start-menu {
             position: absolute;
@@ -89,13 +151,11 @@
         .menu-items {
             display: flex;
         }
-        .left-column {
+        .left-column, .right-column {
             width: 50%;
             padding: 10px;
         }
         .right-column {
-            width: 50%;
-            padding: 10px;
             background-color: #3399FF;
         }
         .menu-item {
@@ -122,21 +182,34 @@
             cursor: pointer;
         }
         @media (max-width: 768px) {
-            .start-menu {
-                width: 100%;
-            }
             .icons {
                 flex-direction: row;
                 flex-wrap: wrap;
                 justify-content: flex-start;
             }
+            #projects-window {
+                width: 95%;
+                height: 95%;
+            }
+            .start-menu {
+                width: 100%;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="desktop">
+    <div id="bios">
+        <p>Monster Modular BIOS v4.51PG, A Flutter Dev Ally</p>
+        <p>Copyright (C) 1984-98, Monster Software, Inc.</p>
+        <p>Flutter BIOS Revision 1011 Beta 005</p>
+        <p>Dart-VM(tm)-IV/750 Processor</p>
+        <p>Memory Test: 262144K OK</p>
+        <p>Detecting IDE Primary Master...</p>
+        <p>Detecting IDE Secondary Master...</p>
+    </div>
+    <div id="desktop">
         <div class="icons">
-            <div class="icon">
+            <div class="icon" onclick="openProjectsWindow()">
                 <img src="https://via.placeholder.com/48/4285F4/FFFFFF?text=F" alt="Projects">
                 <span>Projects</span>
             </div>
@@ -159,63 +232,114 @@
         </div>
         <div class="taskbar">
             <button class="start-button" onclick="toggleStartMenu()">Start</button>
-            <div class="time">8:57 PM</div>
+            <div class="time" id="clock">9:25 PM</div>
         </div>
-        <div class="start-menu" id="startMenu">
-            <div class="profile-header">
-                <img src="https://scontent.fclo1-4.fna.fbcdn.net/v/t39.30808-6/440970615_7912051532167077_5878053765825443036_n.jpg?stp=cp6_dst-jpg&_nc_cat=100&ccb=1-7&_nc_sid=a5f93a&_nc_eui2=AeHIpL4lHoY5g_VZJN2zx4Ge_jw4BzFhvJn-PDgHMWG8mfD98rbnJkCW7smLlYMhKXoAKC1Hf2rkr7RfSRCEm2cu&_nc_ohc=QZMadxpASScQ7kNvgEs-nOD&_nc_ht=scontent.fclo1-4.fna&cb_e2o_trans=t&_nc_gid=AirZOPIXByw5CcHLgAvPyzl&oh=00_AYCVv_CwHLMK4O0Kxspac8LW1zfpcepXIx8A-ObdfVBR7A&oe=66D9A389" alt="Daniel Coyula">
-                <div>
-                    <h3>David Mejía Soto</h3>
-                    <p>Systems and computing engineer</p>
-                </div>
+    </div>
+    <div id="projects-window">
+        <div class="window-header">
+            <span>My Projects</span>
+            <button class="close-button" onclick="closeProjectsWindow()">X</button>
+        </div>
+        <div class="window-content">
+            <h2>Featured</h2>
+            <div class="project featured-project">
+                <h3>DateChatAI</h3>
+                <p>Lifestyle</p>
+                <p>Designed for iOS & Android</p>
+                <p>AI-Powered Dating Assistant</p>
+                <button>See more</button>
             </div>
-            <div class="menu-items">
-                <div class="left-column">
-                    <div class="menu-item">
-                        <img src="https://via.placeholder.com/24/4285F4/FFFFFF?text=F" alt="Projects">
-                        <span>Projects</span>
-                    </div>
-                    <div class="menu-item">
-                        <img src="https://via.placeholder.com/24/FF0000/FFFFFF?text=R" alt="Resume">
-                        <span>Résumé</span>
-                    </div>
-                    <div class="menu-item">
-                        <img src="https://via.placeholder.com/24/181717/FFFFFF?text=G" alt="GitHub">
-                        <span>Github</span>
-                    </div>
-                    <div class="menu-item">
-                        <img src="https://via.placeholder.com/24/0077B5/FFFFFF?text=in" alt="LinkedIn">
-                        <span>LinkedIn</span>
-                    </div>
-                    <div class="menu-item">
-                        <img src="https://via.placeholder.com/24/FF0000/FFFFFF?text=C" alt="Calendar">
-                        <span>Calendar</span>
-                    </div>
-                </div>
-                <div class="right-column">
-                    <h4>Experience</h4>
-                    <p>5+ years</p>
-                    <h4>Skills</h4>
-                    <p>Flutter, Dart<br>
-                    UI/UX<br>
-                    JavaScript, TypeScript<br>
-                    NodeJS, Express, Ionic<br>
-                    MongoDB, Firebase, Parse<br>
-                    Server<br>
-                    HTML, CSS, CI/CD, REST, Git</p>
-                </div>
+            <h2>My Projects</h2>
+            <div class="project">
+                <h3>Baseball Cuba</h3>
+                <p>Sports</p>
+                <p>Designed for iOS & Android</p>
             </div>
-            <div class="action-buttons">
-                <button class="action-button">Email me</button>
-                <button class="action-button">Let's talk</button>
+            <div class="project">
+                <h3>ProAnimals</h3>
+                <p>Animal Care</p>
+                <p>Designed for iOS & Android</p>
             </div>
         </div>
     </div>
+    <div class="start-menu" id="startMenu">
+        <div class="profile-header">
+            <img src="https://scontent.fclo1-4.fna.fbcdn.net/v/t39.30808-6/440970615_7912051532167077_5878053765825443036_n.jpg?stp=cp6_dst-jpg&_nc_cat=100&ccb=1-7&_nc_sid=a5f93a&_nc_eui2=AeHIpL4lHoY5g_VZJN2zx4Ge_jw4BzFhvJn-PDgHMWG8mfD98rbnJkCW7smLlYMhKXoAKC1Hf2rkr7RfSRCEm2cu&_nc_ohc=QZMadxpASScQ7kNvgEs-nOD&_nc_ht=scontent.fclo1-4.fna&cb_e2o_trans=t&_nc_gid=AirZOPIXByw5CcHLgAvPyzl&oh=00_AYCVv_CwHLMK4O0Kxspac8LW1zfpcepXIx8A-ObdfVBR7A&oe=66D9A389" alt="Daniel Coyula">
+            <div>
+                <h3>David Mejía Soto</h3>
+                <p>Systems and Computing Enginnier</p>
+            </div>
+        </div>
+        <div class="menu-items">
+            <div class="left-column">
+                <div class="menu-item">
+                    <img src="https://via.placeholder.com/24/4285F4/FFFFFF?text=F" alt="Projects">
+                    <span>Projects</span>
+                </div>
+                <div class="menu-item">
+                    <img src="https://via.placeholder.com/24/FF0000/FFFFFF?text=R" alt="Resume">
+                    <span>Résumé</span>
+                </div>
+                <div class="menu-item">
+                    <img src="https://via.placeholder.com/24/181717/FFFFFF?text=G" alt="GitHub">
+                    <span>Github</span>
+                </div>
+                <div class="menu-item">
+                    <img src="https://via.placeholder.com/24/0077B5/FFFFFF?text=in" alt="LinkedIn">
+                    <span>LinkedIn</span>
+                </div>
+                <div class="menu-item">
+                    <img src="https://via.placeholder.com/24/FF0000/FFFFFF?text=C" alt="Calendar">
+                    <span>Calendar</span>
+                </div>
+            </div>
+            <div class="right-column">
+                <h4>Experience</h4>
+                <p>5+ years</p>
+                <h4>Skills</h4>
+                <p>Flutter, Dart<br>
+                UI/UX<br>
+                JavaScript, TypeScript<br>
+                NodeJS, Express, Ionic<br>
+                MongoDB, Firebase, Parse<br>
+                Server<br>
+                HTML, CSS, CI/CD, REST, Git</p>
+            </div>
+        </div>
+        <div class="action-buttons">
+            <button class="action-button">Email me</button>
+            <button class="action-button">Let's talk</button>
+        </div>
+    </div>
     <script>
+        function showDesktop() {
+            document.getElementById('bios').style.display = 'none';
+            document.getElementById('desktop').style.opacity = '1';
+        }
+
+        function updateClock() {
+            const now = new Date();
+            const time = now.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+            document.getElementById('clock').textContent = time;
+        }
+
+        function openProjectsWindow() {
+            document.getElementById('projects-window').style.display = 'flex';
+        }
+
+        function closeProjectsWindow() {
+            document.getElementById('projects-window').style.display = 'none';
+        }
+
         function toggleStartMenu() {
             const startMenu = document.getElementById('startMenu');
             startMenu.classList.toggle('active');
         }
+
+        // Initial setup
+        setTimeout(showDesktop, 2000);
+        setInterval(updateClock, 1000);
+        updateClock();
     </script>
 </body>
 </html>
