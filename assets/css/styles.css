@@ -225,55 +225,128 @@ body, html {
 
 
 /* Modal styling */
-.modal {
+/* Ventana modal */
+#vsc-modal {
     display: none;
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-}
-
-.modal-content {
-    background: #1e1e1e;
+    top: 5%;
+    left: 5%;
+    width: 90%;
+    height: 90%;
+    background-color: #1e1e1e;
     color: #d4d4d4;
-    width: 80%;
-    max-width: 1200px; /* Ensure a maximum width */
-    height: 80%;
-    display: flex;
-    flex-direction: column;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
     border-radius: 5px;
+    overflow: hidden;
 }
 
-.modal-header {
+.vsc-titlebar {
+    background-color: #3c3c3c;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
-    border-bottom: 1px solid #333;
-    background: #333;
+    padding: 5px 10px;
+    font-size: 12px;
 }
 
-.close-button {
-    background: #ff0000;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 24px;
-    height: 24px;
+.vsc-titlebar-left {
     display: flex;
     align-items: center;
-    justify-content: center;
+}
+
+.vsc-icon {
+    margin-right: 5px;
+}
+
+.vsc-titlebar-button {
+    background: none;
+    border: none;
+    color: #cccccc;
+    font-size: 14px;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+.vsc-menubar {
+    background-color: #3c3c3c;
+    padding: 5px 10px;
+    font-size: 12px;
+}
+
+.vsc-menubar span {
+    margin-right: 15px;
     cursor: pointer;
 }
 
-.modal-body {
-    flex: 1;
-    overflow: auto;
+.vsc-main {
+    display: flex;
+    height: calc(100% - 60px);
+}
+
+.vsc-sidebar {
+    width: 200px;
+    background-color: #252526;
+    color: #cccccc;
+    font-size: 13px;
+}
+
+.vsc-sidebar-header {
     padding: 10px;
-    background: #1e1e1e;
+    font-weight: bold;
+}
+
+.vsc-sidebar-content {
+    padding: 5px;
+}
+
+.vsc-folder, .vsc-file {
+    padding: 2px 5px;
+    cursor: pointer;
+}
+
+.vsc-file.active {
+    background-color: #37373d;
+}
+
+.vsc-folder-icon, .vsc-file-icon {
+    margin-right: 5px;
+}
+
+.vsc-editor {
+    flex-grow: 1;
+    display: flex;
+    background-color: #1e1e1e;
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.vsc-line-numbers {
+    padding: 10px;
+    text-align: right;
+    color: #858585;
+    user-select: none;
+}
+
+.vsc-code {
+    flex-grow: 1;
+    margin: 0;
+    padding: 10px;
+    white-space: pre;
+    overflow-x: auto;
+}
+
+.vsc-statusbar {
+    background-color: #007acc;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 3px 10px;
+    font-size: 12px;
+}
+
+.vsc-statusbar-right span {
+    margin-left: 15px;
 }

@@ -27,9 +27,10 @@
                 <span>Projects</span>
             </div>
             <div class="icon" onclick="openResumeModal()">
-                <img src="https://via.placeholder.com/48/FF0000/FFFFFF?text=R" alt="Resume">
-                <span>Résumé</span>
+                <img src="https://via.placeholder.com/48/181717/FFFFFF?text=G" alt="GitHub">
+                <span>GitHub</span>
             </div>
+            
             <div class="icon">
                 <img src="https://via.placeholder.com/48/181717/FFFFFF?text=G" alt="GitHub">
                 <span>GitHub</span>
@@ -124,12 +125,89 @@
         </div>
     </div>
     <!-- Modal for Resume Content -->
-<div id="resume-modal" class="modal hidden">
-    <div class="modal-content">
-        <span class="close-button" onclick="closeResumeModal()">&times;</span>
-        <iframe id="resume-frame" src="" width="100%" height="100%"></iframe>
+    <div id="vsc-modal" class="modal">
+        <div class="modal-content">
+            <div class="vsc-titlebar">
+                <div class="vsc-titlebar-left">
+                    <span class="vsc-icon">
+                        <i class="fas fa-code"></i>
+                    </span>
+                    <span>index.html - My Portfolio - Visual Studio Code</span>
+                </div>
+                <div class="vsc-titlebar-right">
+                    <button class="vsc-titlebar-button">_</button>
+                    <button class="vsc-titlebar-button">□</button>
+                    <button class="vsc-titlebar-button" onclick="closeVSCModal()">✕</button>
+                </div>
+            </div>
+            <div class="vsc-menubar">
+                <span>Archivo</span>
+                <span>Editar</span>
+                <span>Selección</span>
+                <span>Ver</span>
+                <span>Ir</span>
+                <span>Terminal</span>
+                <span>Ayuda</span>
+            </div>
+            <div class="vsc-main">
+                <div class="vsc-sidebar">
+                    <div class="vsc-sidebar-header">
+                        EXPLORADOR
+                    </div>
+                    <div class="vsc-sidebar-content">
+                        <div class="vsc-folder">
+                            <span class="vsc-folder-icon">▼</span> MY PORTFOLIO
+                        </div>
+                        <div class="vsc-file-list">
+                            <div class="vsc-file">
+                                <span class="vsc-file-icon">📁</span> assets
+                            </div>
+                            <div class="vsc-file">
+                                <span class="vsc-file-icon">📁</span> css
+                            </div>
+                            <div class="vsc-file">
+                                <span class="vsc-file-icon">📁</span> js
+                            </div>
+                            <div class="vsc-file active">
+                                <span class="vsc-file-icon">📄</span> index.html
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="vsc-editor">
+                    <div class="vsc-line-numbers">
+                        1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15
+                    </div>
+                    <pre class="vsc-code"><code>
+    class AboutMe():
+        
+        def __init__(self):
+            self.name = "David Mejía Soto";
+            self.username = "DavidMejiaSo";
+            self.location = "Pereira, Colombia";
+    
+            self.web = "";
+        
+        def __str__(self):
+            return self.name
+    
+    if __name__ == '__main__':
+        me = AboutMe()
+                    </code></pre>
+                </div>
+            </div>
+            <div class="vsc-statusbar">
+                <div class="vsc-statusbar-left">
+                    <span>main*</span>
+                </div>
+                <div class="vsc-statusbar-right">
+                    <span>UTF-8</span>
+                    <span>LF</span>
+                    <span>Python</span>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
 
     <script src="assets/js/scripts.js"></script>
 </body>
