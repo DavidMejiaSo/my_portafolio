@@ -46,8 +46,36 @@ document.querySelectorAll('.vsc-menubar span, .vsc-file').forEach(item => {
         this.style.backgroundColor = '';
     });
 });
-// Initial setup
+
+function openMobilePDFModal() {
+    document.getElementById('mobile-pdf-modal').style.display = 'block';
+  }
+  
+  // Function to close the mobile PDF modal
+  function closeMobilePDFModal() {
+    document.getElementById('mobile-pdf-modal').style.display = 'none';
+  }
+  
+  // Function to zoom in
+  function zoomIn() {
+    const pdf = document.querySelector('.pdf-container embed');
+    pdf.style.transform = `scale(${parseFloat(pdf.style.transform.replace('scale(', '').replace(')', '') || 1) + 0.1})`;
+  }
+  
+  // Function to zoom out
+  function zoomOut() {
+    const pdf = document.querySelector('.pdf-container embed');
+    pdf.style.transform = `scale(${Math.max(0.1, parseFloat(pdf.style.transform.replace('scale(', '').replace(')', '') || 1) - 0.1)})`;
+  }
+  
+  // Event listeners
+ 
 setTimeout(showDesktop, 2000);
 setInterval(updateClock, 1000);
 updateClock();
 document.querySelector('.icon:nth-child(2)').onclick = openVSCModal;
+document.querySelector('.icon:nth-child(3)').onclick = openMobilePDFModal;
+document.querySelector('.close-modal').onclick = closeMobilePDFModal;
+document.querySelector('.zoom-in').onclick = zoomIn;
+document.querySelector('.zoom-out').onclick = zoomOut;
+// Initial setup

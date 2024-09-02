@@ -31,9 +31,9 @@
                 <span>GitHub</span>
             </div>
             
-            <div class="icon">
-                <img src="https://via.placeholder.com/48/181717/FFFFFF?text=G" alt="GitHub">
-                <span>GitHub</span>
+            <div class="icon" onclick="openMobilePDFModal()">
+                <img src="https://via.placeholder.com/48/181717/FFFFFF?text=G" alt="Mobile">
+                <span>Mobile</span>
             </div>
             <div class="icon">
                 <img src="https://via.placeholder.com/48/0077B5/FFFFFF?text=in" alt="LinkedIn">
@@ -208,7 +208,37 @@
             </div>
         </div>
     </div>
-
+     <!-- / mobile-->
+      <!-- Mobile PDF Modal -->
+      <div id="mobile-pdf-modal" class="modal">
+        <div class="modal-content android-device">
+          <div class="device-frame">
+            <div class="device-screen">
+              <div class="device-header">
+                <span class="device-time">4:07</span>
+                <div class="device-icons">
+                  <span class="device-wifi">&#xf1eb;</span>
+                  <span class="device-signal">&#xf012;</span>
+                  <span class="device-battery">30%</span>
+                </div>
+              </div>
+              <div class="pdf-container">
+                <!-- PDF will be embedded here -->
+                <embed src="assets/hv.pdf" type="application/pdf" width="100%" height="100%">
+              </div>
+            </div>
+            <div class="device-buttons">
+              <button class="nav-back">&#9664;</button>
+              <button class="nav-home">&#9673;</button>
+              <button class="nav-recent">&#9633;</button>
+            </div>
+          </div>
+          <div class="modal-controls">
+          
+            <button class="close-modal">Cerrar</button>
+          </div>
+        </div>
+      </div>
     <script src="assets/js/scripts.js"></script>
 </body>
 </html>

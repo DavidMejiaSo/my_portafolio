@@ -350,3 +350,123 @@ body, html {
 .vsc-statusbar-right span {
     margin-left: 15px;
 }
+
+
+/*Modal mobile */
+/* Estilos del Modal de dispositivo Android */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.4);
+  overflow: auto;
+}
+
+.modal-content.android-device {
+  font-family: 'Roboto', sans-serif;
+  background-color: #ffffff;
+  margin: 0;
+  width: 360px; /* Ancho típico de dispositivo Android */
+  height: 740px; /* Altura típica de dispositivo Android */
+  max-height: 90vh;
+  border-radius: 20px;
+  overflow: hidden;
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+}
+
+.device-frame {
+  width: 100%;
+  height: 100%;
+  border: 10px solid #000;
+  border-radius: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.device-screen {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: #f1f1f1;
+}
+
+.device-header {
+  background-color: #3c3c3c;
+  color: #fff;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+}
+
+.device-icons {
+  display: flex;
+  gap: 5px;
+}
+
+.pdf-container {
+  flex-grow: 1;
+  overflow: auto;
+}
+
+.device-buttons {
+  display: flex;
+  justify-content: space-around;
+  background-color: #000;
+  padding: 10px 0;
+}
+
+.device-buttons button {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.modal-controls {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+}
+
+.modal-controls button {
+  padding: 8px 15px;
+  background-color: #4285F4;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+  .modal-content.android-device {
+    width: 90%;
+    height: 80vh;
+    right: 50%;
+    transform: translate(50%, -50%);
+  }
+}
+
+@media (max-height: 740px) {
+  .modal-content.android-device {
+    height: 90vh;
+  }
+}
