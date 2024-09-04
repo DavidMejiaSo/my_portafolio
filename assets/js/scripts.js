@@ -232,6 +232,22 @@ function closePDFModal() {
 // ... (rest of existing code) ...
 // Event listeners
 
+
+// Función para minimizar cualquier modal
+function minimizeModal(modal) {
+  modal.classList.add('window-minimized');
+  modal.minimized = true;
+}
+
+// Función para restaurar cualquier modal
+function restoreModal(modal) {
+  modal.classList.remove('window-minimized');
+  modal.minimized = false;
+}
+
+// Controladores de eventos para los modales
+
+
 setTimeout(showDesktop, 2000);
 setInterval(updateClock, 1000);
 updateClock();

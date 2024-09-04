@@ -140,11 +140,13 @@ body, html {
     bottom: 30px;
     left: 0;
     width: 300px;
-    background-color: #0055E5;
+    background-color: #E5E5E5;
+    border: 2px solid #00008B;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
     display: none;
-    color: white;
+    color: black;
+    font-family: "Tahoma", sans-serif;
 }
 
 .start-menu.active {
@@ -152,12 +154,13 @@ body, html {
 }
 
 .profile-header {
-    background-color: #0066FF;
+    background-color: #00008B;
     padding: 10px;
     display: flex;
     align-items: center;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
+    color: white;
 }
 
 .profile-header img {
@@ -177,19 +180,28 @@ body, html {
 }
 
 .right-column {
-    background-color: #3399FF;
+    background-color: #B0C4DE;
+    padding-left: 12px;
 }
 
 .menu-item {
     display: flex;
     align-items: center;
     margin-bottom: 10px;
+    cursor: pointer;
 }
 
-.menu-item img {
-    width: 24px;
-    height: 24px;
-    margin-right: 10px;
+.menu-item i {
+    font-size: 18px;
+    margin-right: 8px;
+    color: #00008B;
+}
+
+.menu-item:hover i, .menu-item:hover span {
+    color: white;
+    background-color: #00008B;
+    padding: 2px 5px;
+    border-radius: 3px;
 }
 
 .action-buttons {
@@ -199,13 +211,25 @@ body, html {
 }
 
 .action-button {
-    background-color: #FF9900;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
+    background-color: #C0C0C0;
+    color: black;
+    border: 1px solid #00008B;
+    padding: 5px 15px;
+    border-radius: 3px;
     cursor: pointer;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    font-family: "Tahoma", sans-serif;
 }
+
+.action-button:hover {
+    background-color: #A9A9A9;
+    box-shadow: inset 1px 1px 3px rgba(0,0,0,0.3);
+}
+
+.action-button:active {
+    box-shadow: inset 2px 2px 5px rgba(0,0,0,0.5);
+}
+
 
 /* Responsividad */
 @media (max-width: 768px) {
@@ -546,3 +570,7 @@ Updated styles.css with PDF modal styles
     left: 10%;
     position: fixed;
 }
+
+
+/*-------------*/
+
