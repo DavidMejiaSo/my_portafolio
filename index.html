@@ -35,9 +35,13 @@
                 <img src="https://via.placeholder.com/48/181717/FFFFFF?text=G" alt="Mobile">
                 <span>Mobile</span>
             </div>
-            <div class="icon">
+            <div class="icon" onclick="openPDFModal()">
                 <img src="https://via.placeholder.com/48/0077B5/FFFFFF?text=in" alt="LinkedIn">
                 <span>LinkedIn</span>
+            </div>
+            <div class="icon" onclick="openPDFModal()">
+                <img src="https://via.placeholder.com/48/FF0000/FFFFFF?text=PDF" alt="PDF">
+                PDF Viewer
             </div>
             <div class="icon">
                 <img src="https://via.placeholder.com/48/FFDD00/000000?text=☕" alt="Buy Me A Coffee">
@@ -77,6 +81,7 @@
             </div>
         </div>
     </div>
+
 
     <div class="start-menu" id="startMenu">
         <div class="profile-header">
@@ -132,7 +137,7 @@
                     <span class="vsc-icon">
                         <i class="fas fa-code"></i>
                     </span>
-                    <span>index.html - My Portfolio - Visual Studio Code</span>
+                    <span id="vsc-file-title">index.html - My Portfolio - Visual Studio Code</span>
                 </div>
                 <div class="vsc-titlebar-right">
                     <button class="vsc-titlebar-button">_</button>
@@ -141,35 +146,39 @@
                 </div>
             </div>
             <div class="vsc-menubar">
-                <span>Archivo</span>
-                <span>Editar</span>
-                <span>Selección</span>
-                <span>Ver</span>
-                <span>Ir</span>
+                <span>File</span>
+                <span>Edit</span>
+                <span>Selection</span>
+                <span>View</span>
+                <span>Go</span>
+                <span>Run</span>
                 <span>Terminal</span>
-                <span>Ayuda</span>
+                <span>Help</span>
             </div>
             <div class="vsc-main">
                 <div class="vsc-sidebar">
                     <div class="vsc-sidebar-header">
-                        EXPLORADOR
+                        EXPLORER
                     </div>
                     <div class="vsc-sidebar-content">
                         <div class="vsc-folder">
                             <span class="vsc-folder-icon">▼</span> MY PORTFOLIO
                         </div>
                         <div class="vsc-file-list">
-                            <div class="vsc-file">
-                                <span class="vsc-file-icon">📁</span> assets
+                            <div class="vsc-file" data-lang="python" onclick="showFile('python')">
+                                <span class="vsc-file-icon">📄</span> python.py
                             </div>
-                            <div class="vsc-file">
-                                <span class="vsc-file-icon">📁</span> css
+                            <div class="vsc-file" data-lang="dart" onclick="showFile('dart')">
+                                <span class="vsc-file-icon">📄</span> dart.dart
                             </div>
-                            <div class="vsc-file">
-                                <span class="vsc-file-icon">📁</span> js
+                            <div class="vsc-file" data-lang="javascript" onclick="showFile('javascript')">
+                                <span class="vsc-file-icon">📄</span> javascript.js
                             </div>
-                            <div class="vsc-file active">
-                                <span class="vsc-file-icon">📄</span> index.html
+                            <div class="vsc-file" data-lang="php" onclick="showFile('php')">
+                                <span class="vsc-file-icon">📄</span> php.php
+                            </div>
+                            <div class="vsc-file" data-lang="java" onclick="showFile('java')">
+                                <span class="vsc-file-icon">📄</span> java.java
                             </div>
                         </div>
                     </div>
@@ -178,32 +187,19 @@
                     <div class="vsc-line-numbers">
                         1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15
                     </div>
-                    <pre class="vsc-code"><code>
-    class AboutMe():
-        
-        def __init__(self):
-            self.name = "David Mejía Soto";
-            self.username = "DavidMejiaSo";
-            self.location = "Pereira, Colombia";
-    
-            self.web = "";
-        
-        def __str__(self):
-            return self.name
-    
-    if __name__ == '__main__':
-        me = AboutMe()
+                    <pre class="vsc-code"><code id="code-content">
+    // Select a file from the sidebar to view its content
                     </code></pre>
                 </div>
             </div>
             <div class="vsc-statusbar">
                 <div class="vsc-statusbar-left">
-                    <span>main*</span>
+                    <span id="vsc-current-language">Select a file</span>
                 </div>
                 <div class="vsc-statusbar-right">
                     <span>UTF-8</span>
                     <span>LF</span>
-                    <span>Python</span>
+                    <span id="vsc-language-mode">Plain Text</span>
                 </div>
             </div>
         </div>
@@ -224,7 +220,7 @@
               </div>
               <div class="pdf-container">
                 <!-- PDF will be embedded here -->
-                <embed src="assets/hv.pdf" type="application/pdf" width="100%" height="100%">
+                <embed src="assets/diploma.pdf" type="application/pdf" width="100%" height="100%">
               </div>
             </div>
             <div class="device-buttons">
@@ -239,6 +235,22 @@
           </div>
         </div>
       </div>
+
+     <!--  PDF Modal -->
+     <div id="pdf-modal" class="modal winxp-window">
+        <div class="winxp-titlebar">
+            <div class="winxp-titlebar-title">PDF Viewer</div>
+            <div class="winxp-titlebar-controls">
+                <button class="winxp-button minimize">_</button>
+                <button class="winxp-button maximize">□</button>
+                <button class="winxp-button close" onclick="closePDFModal()">X</button>
+            </div>
+        </div>
+        <div class="winxp-content">
+            <embed src="assets/hv.pdf" type="application/pdf" width="100%" height="100%" />
+        </div>
+    </div>
+
     <script src="assets/js/scripts.js"></script>
 </body>
 </html>

@@ -270,7 +270,7 @@ body, html {
 }
 
 .vsc-menubar {
-    background-color: #3c3c3c;
+    background-color: #333333;
     padding: 5px 10px;
     font-size: 12px;
 }
@@ -278,6 +278,7 @@ body, html {
 .vsc-menubar span {
     margin-right: 15px;
     cursor: pointer;
+    color: #cccccc;
 }
 
 .vsc-main {
@@ -295,6 +296,9 @@ body, html {
 .vsc-sidebar-header {
     padding: 10px;
     font-weight: bold;
+    text-transform: uppercase;
+    font-size: 11px;
+    color: #bbbbbb;
 }
 
 .vsc-sidebar-content {
@@ -328,6 +332,7 @@ body, html {
     text-align: right;
     color: #858585;
     user-select: none;
+    background-color: #1e1e1e;
 }
 
 .vsc-code {
@@ -336,6 +341,7 @@ body, html {
     padding: 10px;
     white-space: pre;
     overflow-x: auto;
+    background-color: #1e1e1e;
 }
 
 .vsc-statusbar {
@@ -351,6 +357,12 @@ body, html {
     margin-left: 15px;
 }
 
+/* Syntax highlighting */
+.keyword { color: #569cd6; }
+.string { color: #ce9178; }
+.comment { color: #6a9955; }
+.number { color: #b5cea8; }
+.function { color: #dcdcaa; }
 
 /*Modal mobile */
 /* Estilos del Modal de dispositivo Android */
@@ -469,4 +481,68 @@ body, html {
   .modal-content.android-device {
     height: 90vh;
   }
+}
+
+
+
+Updated styles.css with PDF modal styles
+
+/* ... (existing styles) ... */
+
+/* PDF Modal Styles */
+/* Windows XP style for PDF modal */
+.winxp-window {
+    background-color: #ECE9D8;
+    border: 1px solid #0054E3;
+    border-radius: 8px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+    font-family: 'Tahoma', sans-serif;
+}
+
+.winxp-titlebar {
+    background: linear-gradient(to right, #0054E3, #3890FF);
+    color: white;
+    padding: 5px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.winxp-titlebar-title {
+    font-weight: bold;
+}
+
+.winxp-titlebar-controls {
+    display: flex;
+}
+
+.winxp-button {
+    width: 22px;
+    height: 22px;
+    margin-left: 2px;
+    border: 1px solid white;
+    background-color: #D1CFD2;
+    color: black;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.winxp-button.close {
+    background-color: #FF5252;
+    color: white;
+}
+
+.winxp-content {
+    padding: 10px;
+    height: calc(100% - 40px);
+}
+
+#pdf-modal {
+    width: 80%;
+    height: 80%;
+    top: 10%;
+    left: 10%;
+    position: fixed;
 }
