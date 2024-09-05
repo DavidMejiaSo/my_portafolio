@@ -161,9 +161,9 @@ function showFile(lang) {
 }
 
 function applySyntaxHighlighting(element, lang) {
-    let html = element.textContent;
-    
-    // Basic syntax highlighting (you might want to use a more robust solution for real projects)
+    let html = element.innerHTML;
+
+    // Definir patrones para las palabras clave y otros elementos
     const patterns = {
         keyword: /\b(class|def|function|var|const|let|if|else|for|while|return|public|private|static|void)\b/g,
         string: /"(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*'/g,
@@ -172,12 +172,15 @@ function applySyntaxHighlighting(element, lang) {
         function: /\b\w+(?=\()/g
     };
 
+    // Iterar sobre los patrones y aplicar el resaltado de sintaxis
     for (const [className, regex] of Object.entries(patterns)) {
         html = html.replace(regex, match => `<span class="${className}">${match}</span>`);
     }
 
+    // Reemplazar el contenido original con el resaltado aplicado
     element.innerHTML = html;
 }
+
 
 function openVSCModal() {
     document.getElementById('vsc-modal').style.display = 'block';
@@ -247,6 +250,41 @@ function restoreModal(modal) {
 
 // Controladores de eventos para los modales
 
+function minimizeWindow(windowId) {
+    const window = document.getElementById(windowId);
+    window.classList.add('minimized');
+    
+    const minimizedWindows = document.getElementById('minimized-windows');
+    const minimizedButton = document.createElement('button');
+    minimizedButton.classList.add('minimized-window');
+    minimizedButton.textContent = window.querySelector('.window-header span').textContent;
+    minimizedButton.onclick = () => restoreWindow(windowId);
+    
+    minimizedWindows.appendChild(minimizedButton);
+  }
+  
+  // Function to restore a minimized window
+  function restoreWindow(windowId) {
+    const window = document.getElementById(windowId);
+    window.classList.remove('minimized');
+    
+    const minimizedWindows = document.getElementById('minimized-windows');
+    const minimizedButton = Array.from(minimizedWindows.children).find(
+      button => button.textContent === window.querySelector('.window-header span').textContent
+    );
+    
+    if (minimizedButton) {
+      minimizedWindows.removeChild(minimizedButton);
+    }
+  }
+  
+  // Function to toggle the start menu
+  function toggleStartMenu() {
+    const startMenu = document.getElementById('startMenu');
+    startMenu.style.display = startMenu.style.display === 'block' ? 'none' : 'block';
+  }
+  
+  
 
 setTimeout(showDesktop, 2000);
 setInterval(updateClock, 1000);
@@ -259,3 +297,12 @@ document.querySelector('.zoom-out').onclick = zoomOut;
 document.querySelector('.icon:nth-child(3)').onclick = openPDFModal;
 document.querySelector('.icon:nth-child(2)').onclick = openVSCModal;
 // Initial setup
+// Event listener to close the start menu when clicking outside
+document.addEventListener('click', function(event) {
+    const startMenu = document.getElementById('startMenu');
+    const startButton = document.getElementById('start-button');
+    
+    if (!startMenu.contains(event.target) && event.target !== startButton) {
+      startMenu.style.display = 'none';
+    }
+  });

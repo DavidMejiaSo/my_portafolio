@@ -49,8 +49,10 @@
             </div>
         </div>
         <div class="taskbar">
-            <button class="start-button" onclick="toggleStartMenu()">Start</button>
-            <div class="time" id="clock">9:25 PM</div>
+            <button id="start-button" onclick="toggleStartMenu()">Start</button>
+            <div id="minimized-windows"></div>
+            <div id="clock" class="time"></div>
+          </div>
         </div>
         
         
@@ -59,8 +61,11 @@
     <div id="projects-window">
         <div class="window-header">
             <span>My Projects</span>
-            <button class="close-button" onclick="closeProjectsWindow()">X</button>
-        </div>
+            <div class="window-controls">
+              <button class="minimize-button" onclick="minimizeWindow('projects-window')">_</button>
+              <button class="close-button" onclick="closeProjectsWindow()">X</button>
+            </div>
+          </div>
         <div class="window-content">
             <h2>Featured</h2>
             <div class="project featured-project">
@@ -85,62 +90,42 @@
     </div>
 
 
-    <div class="start-menu" id="startMenu">
-        <div class="profile-header">
-            <img src="https://scontent.fclo1-4.fna.fbcdn.net/v/t39.30808-6/440970615_7912051532167077_5878053765825443036_n.jpg?stp=cp6_dst-jpg&_nc_cat=100&ccb=1-7&_nc_sid=a5f93a&_nc_eui2=AeHIpL4lHoY5g_VZJN2zx4Ge_jw4BzFhvJn-PDgHMWG8mfD98rbnJkCW7smLlYMhKXoAKC1Hf2rkr7RfSRCEm2cu&_nc_ohc=Jj69nACBCjUQ7kNvgHyZCb1&_nc_ht=scontent.fclo1-4.fna&cb_e2o_trans=t&_nc_gid=A3MotTKnDlpCXgdZ5lbgMlY&oh=00_AYDebtVfA-EFV0e1jULFc4uRaCNgZ8iFZL8vC6NJuBGRfA&oe=66DEB149" alt="David Mejía Soto">
-            <div>
-                <h3>David Mejía Soto</h3>
-                <p>Systems and Computing Engineer</p>
-            </div>
+    <div id="startMenu" class="start-menu">
+        <div class="start-header">
+          <img src="https://via.placeholder.com/48" alt="User Avatar" class="user-avatar">
+          <span class="user-name">David Mejía Soto</span>
         </div>
-        <div class="menu-items">
-            <div class="left-column">
-                <div class="menu-item">
-                    <i class="fab fa-github"></i>
-                    <span>GitHub</span>
-                </div>
-                <div class="menu-item">
-                    <i class="fab fa-linkedin"></i>
-                    <span>LinkedIn</span>
-                </div>
-                <div class="menu-item">
-                    <i class="fab fa-instagram"></i>
-                    <span>Instagram</span>
-                </div>
-                <div class="menu-item">
-                    <i class="fab fa-twitter"></i>
-                    <span>Twitter</span>
-                </div>
-              
-            </div>
-            <div class="right-column">
-                <h4>Experience</h4>
-                <p>5+ years</p>
-                <h4>Skills</h4>
-                <p>Flutter, Dart<br>UI/UX<br>JavaScript, TypeScript<br>NodeJS, Express, Ionic<br>MongoDB, Firebase, Parse<br>Server<br>HTML, CSS, CI/CD, REST, Git</p>
-            </div>
+        <div class="start-body">
+          <div class="start-left">
+            <div class="menu-item"><img src="https://via.placeholder.com/16" alt="Icon">My Documents</div>
+            <div class="menu-item"><img src="https://via.placeholder.com/16" alt="Icon">My Pictures</div>
+            <div class="menu-item"><img src="https://via.placeholder.com/16" alt="Icon">My Music</div>
+            <div class="menu-item"><img src="https://via.placeholder.com/16" alt="Icon">My Computer</div>
+            <div class="menu-item"><img src="https://via.placeholder.com/16" alt="Icon">Control Panel</div>
+          </div>
+          <div class="start-right">
+            <h3>Experience</h3>
+            <p>5+ years</p>
+            <h3>Skills</h3>
+            <p>Flutter, Dart, UI/UX, JavaScript, TypeScript, NodeJS, Express, Ionic, MongoDB, Firebase, Parse Server, HTML, CSS, CI/CD, REST, Git</p>
+          </div>
         </div>
-        <div class="action-buttons">
-            <button class="action-button">Email me</button>
-            <button class="action-button">Let's talk</button>
+        <div class="start-footer">
+          <button class="action-button">Email me</button>
+          <button class="action-button">Let's talk</button>
         </div>
-    </div>
-    
+      </div>
     <!-- Modal for Resume Content -->
     <div id="vsc-modal" class="modal">
-        <div class="modal-content">
-            <div class="vsc-titlebar">
-                <div class="vsc-titlebar-left">
-                    <span class="vsc-icon">
-                        <i class="fas fa-code"></i>
-                    </span>
-                    <span id="vsc-file-title">index.html - My Portfolio - Visual Studio Code</span>
-                </div>
-                <div class="vsc-titlebar-right">
-                    <button class="vsc-titlebar-button">_</button>
-                    <button class="vsc-titlebar-button">□</button>
-                    <button class="vsc-titlebar-button" onclick="closeVSCModal()">✕</button>
-                </div>
+        <div class="vsc-titlebar">
+            <div class="vsc-titlebar-left">
+              <span class="vsc-icon"></span>
+              <span id="vsc-file-title">index.html - My Portfolio - Visual Studio Code</span>
+            </div>
+            <div class="vsc-titlebar-right">
+              <button class="minimize-button" onclick="minimizeWindow('vsc-modal')">_</button>
+              <button onclick="closeVSCModal()">X</button>
+            </div>
             </div>
             <div class="vsc-menubar">
                 <span>File</span>
@@ -182,7 +167,7 @@
                 </div>
                 <div class="vsc-editor">
                     <div class="vsc-line-numbers">
-                        1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15
+                        1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<
                     </div>
                     <pre class="vsc-code"><code id="code-content">
     // Select a file from the sidebar to view its content
@@ -238,11 +223,10 @@
         <div class="winxp-titlebar">
             <div class="winxp-titlebar-title">PDF Viewer</div>
             <div class="winxp-titlebar-controls">
-                <button class="winxp-button minimize">_</button>
-                <button class="winxp-button maximize">□</button>
-                <button class="winxp-button close" onclick="closePDFModal()">X</button>
+              <button class="winxp-button minimize-button" onclick="minimizeWindow('pdf-modal')">_</button>
+              <button class="winxp-button" onclick="closePDFModal()">X</button>
             </div>
-        </div>
+          </div>
         <div class="winxp-content">
             <embed src="assets/hv.pdf" type="application/pdf" width="100%" height="100%" />
         </div>
