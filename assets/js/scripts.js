@@ -165,7 +165,7 @@ function applySyntaxHighlighting(element, lang) {
 
     // Definir patrones para las palabras clave y otros elementos
     const patterns = {
-        keyword: /\b(class|def|function|var|const|let|if|else|for|while|return|public|private|static|void)\b/g,
+        
         string: /"(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*'/g,
         comment: /\/\/.*|\/\*[\s\S]*?\*\/|#.*/g,
         number: /\b\d+(\.\d+)?\b/g,

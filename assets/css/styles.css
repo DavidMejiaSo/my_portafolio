@@ -64,63 +64,83 @@ body, html {
 }
 
 /* Barra de tareas */
+Corrected Taskbar CSS
+
+/* Barra de tareas */
 .taskbar {
-    background: linear-gradient(to bottom, #1F44C1 0%, #2859CA 3%, #2D65D0 6%, #296CD2 10%, #2970D4 12%, #2B76D7 15%, #2C7AD9 18%, #2D7FDA 20%, #2D85DE 23%, #2E8AE1 28%, #2E8FE4 34%, #2F93E6 40%, #2F99E9 53%, #2F9DEB 83%, #2EA1ED 100%);
-    padding: 2px 10px;
-  }
-  
-  #start-button {
-    background: linear-gradient(to bottom, #59A842 0%, #5DA444 3%, #5EA745 5%, #47A328 8%, #47A127 11%, #45A025 14%, #44A023 17%, #419E20 22%, #3F9C1D 28%, #3D9A1B 39%, #3B9818 61%, #399615 94%, #399615 100%);
-    color: white;
-    border: 1px solid #2E8E11;
-    padding: 2px 10px;
-    font-weight: bold;
-    cursor: pointer;
-  }
-  
-  #minimized-windows {
-    display: flex;
-    align-items: center;
-  }
-  
-  .minimized-window {
-    background: linear-gradient(to bottom, #5593E5 0%, #4B88E0 50%, #3D7BD7 100%);
-    color: white;
-    padding: 2px 10px;
-    margin-right: 5px;
-    border: 1px solid #1C56C2;
-    cursor: pointer;
-  }
-  
-  /* Window styles */
-  .window {
-    border: 1px solid #0054E3;
-    border-radius: 8px 8px 0 0;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
-  }
-  
-  .window-header {
-    background: linear-gradient(to right, #0054E3, #3890FF);
-    color: white;
-    padding: 5px 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-radius: 8px 8px 0 0;
-  }
-  
-  .window-controls button {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    margin-left: 5px;
-  }
-  
-  .minimized {
-    display: none;
-  }
+  background: linear-gradient(to bottom, #1F44C1 0%, #2859CA 3%, #2D65D0 6%, #296CD2 10%, #2970D4 12%, #2B76D7 15%, #2C7AD9 18%, #2D7FDA 20%, #2D85DE 23%, #2E8AE1 28%, #2E8FE4 34%, #2F93E6 40%, #2F99E9 53%, #2F9DEB 83%, #2EA1ED 100%);
+  padding: 2px 10px;
+  display: flex;
+  align-items: center;
+  height: 30px; /* Altura reducida para una barra más delgada */
+}
+
+#start-button {
+  background: linear-gradient(to bottom, #59A842 0%, #5DA444 3%, #5EA745 5%, #47A328 8%, #47A127 11%, #45A025 14%, #44A023 17%, #419E20 22%, #3F9C1D 28%, #3D9A1B 39%, #3B9818 61%, #399615 94%, #399615 100%);
+  color: white;
+  border: 1px solid #2E8E11;
+  padding: 2px 10px;
+  font-weight: bold;
+  cursor: pointer;
+  height: 24px; /* Altura ajustada para el botón */
+  font-size: 12px; /* Tamaño de fuente reducido */
+}
+
+#minimized-windows {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  margin: 0 10px;
+  overflow-x: auto; /* Permite desplazamiento horizontal si hay muchas ventanas minimizadas */
+}
+
+.minimized-window {
+  background: linear-gradient(to bottom, #5593E5 0%, #4B88E0 50%, #3D7BD7 100%);
+  color: white;
+  padding: 2px 8px;
+  margin-right: 5px;
+  border: 1px solid #1C56C2;
+  cursor: pointer;
+  font-size: 11px; /* Tamaño de fuente reducido */
+  height: 20px; /* Altura ajustada */
+  display: flex;
+  align-items: center;
+}
+
+#clock {
+  font-size: 12px; /* Tamaño de fuente reducido */
+  color: white;
+}
+
+/* Estilos de ventana (sin cambios) */
+.window {
+  border: 1px solid #0054E3;
+  border-radius: 8px 8px 0 0;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.window-header {
+  background: linear-gradient(to right, #0054E3, #3890FF);
+  color: white;
+  padding: 5px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 8px 8px 0 0;
+}
+
+.window-controls button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+.minimized {
+  display: none;
+}
 
 
 
@@ -413,7 +433,7 @@ body, html {
 /* Syntax highlighting */
 /* Syntax highlighting */
 .keyword { color: #569cd6; }
-.string { color: #ce9178; }
+.string { color: #d5511c; }
 .comment { color: #6a9955; }
 .number { color: #b5cea8; }
 .function { color: #dcdcaa; }
